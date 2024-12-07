@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Code Table</title>
+    <link rel="shortcut icon" href="download.jpeg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border: 2px solid black;
+        }
+
+
+        /* Bottom row styling */
+        table tr:last-child {
+            font-weight: bold;
+            background-color: #e6f7ff;
+            /* Light gray background */
+            border-top: 2px solid #000;
+            /* Bold top border */
+        }
+
+        /* Rightmost column styling */
+        table td:last-child {
+            font-weight: bold;
+            background-color: #e6f7ff;
+            /* Light blue background */
+            border-left: 2px solid #000;
+            /* Bold left border */
+        }
+
+        table tr td:first-child {
+            font-weight: bold;
+            background-color: #e6f7ff;
+            /* Light blue background */
+            border-right: 2px solid #000;
+        }
+
+        table tr th:first-child {
+            font-weight: bold;
+            background-color: #e6f7ff;
+            /* Light blue background */
+            border-right: 2px solid #000;
+        }
+
+        table tr th:last-child {
+            font-weight: bold;
+            background-color: #e6f7ff;
+            /* Light blue background */
+            border-left: 2px solid #000;
+        }
+
+        table tr th {
+            font-weight: bold;
+            background-color: #e6f7ff;
+            /* Light blue background */
+            border-bottom: 2px solid #000;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        table tr td:first-child {
+            font-weight: bolder;
+
+        }
+
+        .container {
+            padding: 10px;
+        }
+
+        input {
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 140px;
+            font-size: 18px;
+            background-color: azure;
+            border-radius: 10px;
+            border: 2px solid grey;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 18px;
+            background-color: azure;
+            border-radius: 10px;
+            border: 2px solid grey;
+            height: 45px;
+            margin-bottom: 10px;
+        }
+        #download button{
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div class="container">
+            <input type="text" id="styleCodeInput" placeholder="Enter Style Code">
+            <button onclick="generateTable()">Generate</button>
+            <div id="tableContainer"></div>
+            <div id="download">
+                <button onclick="downloadPDF()">Download as PDF</button>
+                <button onclick="downloadExcel()">Download as Excel</button>
+            </div>
+        </div>
+    </center>
+    <!-- Include the external libraries for PDF and Excel export -->
+
+    <!-- Include jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- Include jsPDF autoTable plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
