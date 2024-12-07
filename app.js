@@ -158,6 +158,7 @@ const data = [
     { "box_number": 113, "style_code": "H2DA0026", "color": "Pink", "size": 14, "quantity": 9 },
     { "box_number": 32, "style_code": "H2DA0031", "color": "Dark green", "size": 10, "quantity": 9 },
     { "box_number": 140, "style_code": "H2DA0031", "color": "Dark green", "size": 10, "quantity": 7 },
+    { "box_number": 140, "style_code": "H2DA0031", "color": "Dark green", "size": 10, "quantity": 9 },
     { "box_number": 31, "style_code": "H2DA0031", "color": "Dark green", "size": 11, "quantity": 3 },
     { "box_number": 32, "style_code": "H2DA0031", "color": "Dark green", "size": 11, "quantity": 16 },
     { "box_number": 32, "style_code": "H2DA0031", "color": "Dark green", "size": 11, "quantity": 19 },
@@ -2213,6 +2214,24 @@ const data = [
     { "box_number": 213, "style_code": "X0DL2015", "color": "Moran", "size": 11, "quantity": 1 }
     
 ]
+
+// const uniqueBoxNumbers = [...new Set(data.map(item => item.style_code))];
+
+//         // Get the div element
+//         const boxNumDiv = document.getElementById("boxnum");
+
+//         // Add each unique box number as a line in the div
+//         uniqueBoxNumbers.forEach(box => {
+//             const line = document.createElement("div"); // Create a new div for each line
+//             line.textContent = box; // Set the text content
+//             boxNumDiv.appendChild(line); // Add the div as a child
+//         });
+const totalQuantity = data.reduce((accumulator, currentItem) => {
+    return accumulator + currentItem.quantity;
+}, 0);
+
+console.log('Total Quantity:', totalQuantity);
+
 function Reset(){
     document.getElementById('styleCodeInput').value = ''
 
