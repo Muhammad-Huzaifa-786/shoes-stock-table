@@ -2266,11 +2266,11 @@ accordion.appendChild(createAccordionSection("Style Codes", uniqueStyleCodes));
 accordion.appendChild(createAccordionSection("Colors", uniqueColors));
 accordion.appendChild(createAccordionSection("Sizes", uniqueSizes));
 
-const totalQuantity = data.reduce((accumulator, currentItem) => {
-    return accumulator + currentItem.quantity;
-}, 0);
+// // const totalQuantity = data.reduce((accumulator, currentItem) => {
+// //     return accumulator + currentItem.quantity;
+// // }, 0);
 
-console.log('Total Quantity:', totalQuantity);
+// console.log('Total Quantity:', totalQuantity);
 
 function Reset() {
     document.getElementById('styleCodeInput').value = ''
@@ -2367,12 +2367,6 @@ function generateTable() {
     totalLabelCell.colSpan = sizes.length + 1
     totalRow.appendChild(totalLabelCell);
 
-    // sizes.forEach(size => {
-    //     const totalCell = document.createElement("td");
-    //     totalCell.textContent = '' //sizeTotals[size];
-    //     totalRow.appendChild(totalCell);
-    // });
-
     const grandTotalCell = document.createElement("td");
     grandTotalCell.textContent = grandTotal;
     totalRow.appendChild(grandTotalCell);
@@ -2392,55 +2386,3 @@ document.getElementById("styleCodeInput").addEventListener("keydown", function (
     }
 });
 
-// Function to download the table as a PDF
-function downloadPDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    const styleCode = document.getElementById("styleCodeInput").value.trim().toUpperCase();
-    const table = document.querySelector("#tableContainer table");
-
-    if (!table) {
-        alert("No table available to download!");
-        return;
-    }
-
-    // Using jsPDF's autoTable to generate the table in PDF
-    doc.autoTable({ html: table });
-
-    // Save the PDF
-    doc.save(`style_code_table:${styleCode}.pdf`);
-}
-
-// Function to download the table as an Excel file
-function downloadExcel() {
-    const table = document.querySelector("#tableContainer table");
-    const styleCode = document.getElementById("styleCodeInput").value.trim().toUpperCase();
-
-    if (!table) {
-        alert("No table available to download!");
-        return;
-    }
-
-    let csv = [];
-    const rows = table.querySelectorAll("tr");
-
-    // Loop through each row and collect data
-    rows.forEach(row => {
-        const cells = row.querySelectorAll("th, td");
-        const rowArray = [];
-        cells.forEach(cell => rowArray.push(cell.innerText));
-        csv.push(rowArray.join(","));
-    });
-
-    // Create CSV string
-    const csvString = csv.join("\n");
-
-    // Create a temporary link to trigger the download
-    const link = document.createElement("a");
-    link.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csvString);
-    link.target = "_blank";
-    link.download = `style_code_table${styleCode}.csv`; // Set the download filename
-
-    // Programmatically click the link to trigger the download
-    link.click();
-}
