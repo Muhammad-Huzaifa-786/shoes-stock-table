@@ -2212,22 +2212,9 @@ const data = [
     { "box_number": 213, "style_code": "X0DL2015", "color": "stamen powder", "size": 15, "quantity": 10 },
     { "box_number": 213, "style_code": "X0DL2015", "color": "Gray", "size": 11, "quantity": 1 },
     { "box_number": 213, "style_code": "X0DL2015", "color": "Moran", "size": 11, "quantity": 1 }
-
 ]
-
-
-// Extract unique `box_number`
-
-// Extract unique values
-const uniqueBoxNumbers = [...new Set(data.map(item => item.box_number))].sort((a, b) => a - b);
 const uniqueStyleCodes = [...new Set(data.map(item => item.style_code))].sort();
-const uniqueColors = [...new Set(data.map(item => item.color))].sort((a, b) => a.localeCompare(b));
-const uniqueSizes = [...new Set(data.map(item => item.size))].sort((a, b) => a - b);
-
-// Get the accordion div
 const accordion = document.getElementById("accordion");
-
-// Helper function to create an accordion section
 function createAccordionSection(title, items) {
     // Create accordion item container
     const section = document.createElement("div");
@@ -2237,19 +2224,44 @@ function createAccordionSection(title, items) {
     const header = document.createElement("div");
     header.classList.add("accordion-header");
     header.textContent = title;
+
     section.appendChild(header);
 
     // Create accordion content
     const content = document.createElement("div");
     content.classList.add("accordion-content");
-    content.style.display = "none"; // Initially hidden
 
     // Populate content with items
     items.forEach(item => {
         const line = document.createElement("div");
-        line.textContent = item;
+        line.style.display = "flex";
+        line.style.alignItems = "center";
+        line.style.justifyContent = "space-between";
+        line.style.margin = "auto";
+        line.style.width = "190px";
+
+
+        // Text for the item
+        const text = document.createElement("span");
+        text.textContent = item;
+
+        // Copy button for the item
+        const copyButton = document.createElement("button");
+        copyButton.textContent = "Show";
+        copyButton.classList.add("copy-button");
+        copyButton.style.marginLeft = "10px";
+        copyButton.style.marginTop = "10px";
+        copyButton.addEventListener("click", () => {
+
+            document.getElementById("styleCodeInput").value = item
+            generateTable()
+            window.scrollTo(0, 0)
+        });
+        line.appendChild(text);
+        line.appendChild(copyButton);
         content.appendChild(line);
     });
+
     section.appendChild(content);
 
     // Toggle visibility on header click
@@ -2259,24 +2271,13 @@ function createAccordionSection(title, items) {
 
     return section;
 }
-
-// Create sections for each unique property
-accordion.appendChild(createAccordionSection("Box Numbers", uniqueBoxNumbers));
-accordion.appendChild(createAccordionSection("Style Codes", uniqueStyleCodes));
-accordion.appendChild(createAccordionSection("Colors", uniqueColors));
-accordion.appendChild(createAccordionSection("Sizes", uniqueSizes));
-
-// // const totalQuantity = data.reduce((accumulator, currentItem) => {
-// //     return accumulator + currentItem.quantity;
-// // }, 0);
-
-// console.log('Total Quantity:', totalQuantity);
-
+accordion.appendChild(createAccordionSection("Art No.", uniqueStyleCodes));
 function Reset() {
     document.getElementById('styleCodeInput').value = ''
-
 }
-
+function Resetbox() {
+    document.getElementById('styleCodeInputbox').value = ''
+}
 function generateTable() {
     const styleCode = document.getElementById("styleCodeInput").value.trim();
     if (!styleCode) {
@@ -2286,6 +2287,27 @@ function generateTable() {
 
     // Filter data for the given style code
     const filteredData = data.filter(item => item.style_code.toLowerCase() === styleCode.toLowerCase());
+
+    const filteredDatas = data.filter(item => item.style_code.toLowerCase() === styleCode.toLowerCase()).sort((a, b) => a.color.localeCompare(b.color));
+
+    const tableBody = document.getElementById('resultTable').querySelector('tbody');
+    tableBody.innerHTML = ""; // Clear previous results
+
+    if (filteredDatas.length === 0) {
+        const row = tableBody.insertRow();
+        const cell = row.insertCell(0);
+        cell.colSpan = 4;
+        cell.textContent = "No data found.";
+        cell.style.textAlign = "center";
+    } else {
+        filteredDatas.forEach(item => {
+            const row = tableBody.insertRow();
+            row.insertCell(0).textContent = item.box_number;
+            row.insertCell(1).textContent = item.color;
+            row.insertCell(2).textContent = item.size;
+            row.insertCell(3).textContent = item.quantity;
+        });
+    }
 
     if (filteredData.length === 0) {
         alert("No data found for the entered style code.");
@@ -2378,11 +2400,135 @@ function generateTable() {
     tableContainer.innerHTML = ""; // Clear previous table
     tableContainer.appendChild(table);
 }
+function generateTablebox() {
+    const boxNumber = document.getElementById("styleCodeInputbox").value; // Change to boxNumber
+    if (!boxNumber) {
+        alert("Please enter a box number.");
+        return;
+    }
 
-// Listen for Enter key on the input field
+    // Filter data for the given box number
+    const filteredData = data.filter(item => item.box_number === parseInt(boxNumber)); // Parse input as integer
+    const filteredDatas = data.filter(item => item.box_number === parseInt(boxNumber)).sort();
+
+    const tableBody = document.getElementById('resultTablebox').querySelector('tbody');
+    tableBody.innerHTML = ""; // Clear previous results
+
+    if (filteredDatas.length === 0) {
+        const row = tableBody.insertRow();
+        const cell = row.insertCell(0);
+        cell.colSpan = 4;
+        cell.textContent = "No data found.";
+        cell.style.textAlign = "center";
+    } else {
+        filteredDatas.forEach(item => {
+            const row = tableBody.insertRow();
+            row.insertCell(0).textContent = item.style_code;
+            row.insertCell(1).textContent = item.color;
+            row.insertCell(2).textContent = item.size;
+            row.insertCell(3).textContent = item.quantity;
+        });
+    }
+
+    if (filteredData.length === 0) {
+        alert("No data found for the entered box number.");
+        return;
+    }
+
+    // Group data by color and size
+    const groupedData = {};
+    filteredData.forEach(item => {
+        if (!groupedData[item.color]) {
+            groupedData[item.color] = {};
+        }
+        if (!groupedData[item.color][item.size]) {
+            groupedData[item.color][item.size] = 0;
+        }
+        groupedData[item.color][item.size] += item.quantity;
+    });
+
+    // Generate unique sizes
+    const sizes = [...new Set(filteredData.map(item => item.size))].sort((a, b) => a - b);
+
+    // Calculate totals
+    const sizeTotals = {}; // Total for each size
+    let grandTotal = 0; // Grand total for all sizes
+
+    sizes.forEach(size => {
+        sizeTotals[size] = 0;
+        Object.keys(groupedData).forEach(color => {
+            sizeTotals[size] += groupedData[color][size] || 0;
+        });
+        grandTotal += sizeTotals[size];
+    });
+
+    // Create table dynamically
+    const table = document.createElement("table");
+    const headerRow = document.createElement("tr");
+    const headerCell = document.createElement("th");
+    headerCell.textContent = `Box Number: ${boxNumber.toUpperCase()}`; // Update title to Box Number
+    headerRow.appendChild(headerCell);
+
+    sizes.forEach(size => {
+        const sizeCell = document.createElement("th");
+        sizeCell.textContent = size;
+        headerRow.appendChild(sizeCell);
+    });
+
+    const totalHeaderCell = document.createElement("th");
+    totalHeaderCell.textContent = "Total";
+    headerRow.appendChild(totalHeaderCell);
+    table.appendChild(headerRow);
+
+    // Add rows for each color
+    Object.keys(groupedData).forEach(color => {
+        const row = document.createElement("tr");
+        const colorCell = document.createElement("td");
+        colorCell.textContent = color;
+        row.appendChild(colorCell);
+
+        let colorTotal = 0; // Total for this color
+        sizes.forEach(size => {
+            const quantityCell = document.createElement("td");
+            const quantity = groupedData[color][size] || 0;
+            quantityCell.textContent = quantity;
+            row.appendChild(quantityCell);
+            colorTotal += quantity;
+        });
+
+        const colorTotalCell = document.createElement("td");
+        colorTotalCell.textContent = colorTotal;
+        row.appendChild(colorTotalCell);
+
+        table.appendChild(row);
+    });
+
+    // Add last row for totals
+    const totalRow = document.createElement("tr");
+    const totalLabelCell = document.createElement("td");
+    totalLabelCell.textContent = "Total";
+    totalLabelCell.colSpan = sizes.length + 1;
+    totalRow.appendChild(totalLabelCell);
+
+    const grandTotalCell = document.createElement("td");
+    grandTotalCell.textContent = grandTotal;
+    totalRow.appendChild(grandTotalCell);
+
+    table.appendChild(totalRow);
+
+    // Display the table
+    const tableContainer = document.getElementById("tableContainerbox");
+    tableContainer.innerHTML = ""; // Clear previous table
+    tableContainer.appendChild(table);
+}
 document.getElementById("styleCodeInput").addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         generateTable(); // Call the function when Enter is pressed
+    }
+});
+document.getElementById("styleCodeInputbox").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        generateTablebox(); // Call the function when Enter is pressed
     }
 });
 

@@ -16,6 +16,7 @@
             border-collapse: collapse;
             margin: 20px 0;
             border: 2px solid black;
+            max-width: 500px;
         }
 
 
@@ -104,32 +105,75 @@
             height: 45px;
             margin-bottom: 10px;
         }
-        #download button{
+
+        #download button {
             margin-top: 100px;
         }
+
         /* Styling for the accordion */
-.accordion-item {
-    border: 1px solid #ccc;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    overflow: hidden;
-}
+        .accordion-item {
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
 
-.accordion-header {
-    background-color: #f1f1f1;
-    cursor: pointer;
-    padding: 10px;
-    font-weight: bold;
-}
+        .accordion-header {
+            background-color: #f1f1f1;
+            cursor: pointer;
+            padding: 10px;
+            font-weight: bold;
+        }
 
-.accordion-content {
-    display: none; /* Initially hidden */
-    padding: 10px;
-    font-size: 20px;
-    background-color: #fff;
-    border-top: 1px solid #ccc;
-}
+        .accordion-content {
+            display: none;
+            /* Initially hidden */
+            padding: 10px;
+            font-size: 20px;
+            background-color: #fff;
+            border-top: 1px solid #ccc;
+        }
 
+        .copy-button {
+            padding: 2px 10px;
+            background-color: yellow;
+            color: black;
+            height: 25px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .copy-button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        #resultTable td {
+            border: 2px solid black;
+            font-weight: 100;
+            background-color: white;
+        }
+
+        #resultTable th {
+            border: 2px solid black;
+            font-weight: 600;
+            background-color: #e6f7ff;
+
+        }
+
+        #resultTablebox td {
+            border: 2px solid black;
+            font-weight: 100;
+            background-color: white;
+        }
+
+        #resultTablebox th {
+            border: 2px solid black;
+            font-weight: 600;
+            background-color: #e6f7ff;
+
+        }
     </style>
 </head>
 
@@ -140,12 +184,55 @@
             <button onclick="generateTable()">Generate</button>
             <button onclick="Reset()">Reset</button>
             <div id="tableContainer"></div>
-          
+            <h2>Filter Rows By Art No.</h2>
+            <table id="resultTable">
+                <thead>
+                    <tr>
+                        <th>Box Number</th>
+                        <th>Color</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be inserted here dynamically -->
+                </tbody>
+            </table>
+
         </div>
     </center>
+    <br><br>
+    <hr>
+    <hr><br><br>
+    <center>
+        <div class="containerbox">
+            <input type="number" id="styleCodeInputbox" placeholder="Enter Box Number">
+            <button onclick="generateTablebox()">Generate</button>
+            <button onclick="Resetbox()">Reset</button>
+            <div id="tableContainerbox"></div>
+            <h2>Filter Rows by Box number</h2>
+            <table id="resultTablebox">
+                <thead>
+                    <tr>
+                        <th>Style code</th>
+                        <th>Color</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be inserted here dynamically -->
+                </tbody>
+            </table>
+
+        </div>
+    </center>
+    <br><br>
+    <hr>
+    <hr><br><br>
     <div id="accordion">
     </div>
-    
+
     <script src="app.js"></script>
 </body>
 
