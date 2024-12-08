@@ -2212,30 +2212,71 @@ const data = [
     { "box_number": 213, "style_code": "X0DL2015", "color": "stamen powder", "size": 15, "quantity": 10 },
     { "box_number": 213, "style_code": "X0DL2015", "color": "Gray", "size": 11, "quantity": 1 },
     { "box_number": 213, "style_code": "X0DL2015", "color": "Moran", "size": 11, "quantity": 1 }
-    
+
 ]
 
-// const uniqueBoxNumbers = [...new Set(data.map(item => item.style_code))];
 
-//         // Get the div element
-//         const boxNumDiv = document.getElementById("boxnum");
+// Extract unique `box_number`
 
-//         // Add each unique box number as a line in the div
-//         uniqueBoxNumbers.forEach(box => {
-//             const line = document.createElement("div"); // Create a new div for each line
-//             line.textContent = box; // Set the text content
-//             boxNumDiv.appendChild(line); // Add the div as a child
-//         });
+// Extract unique values
+const uniqueBoxNumbers = [...new Set(data.map(item => item.box_number))].sort((a, b) => a - b);
+const uniqueStyleCodes = [...new Set(data.map(item => item.style_code))].sort();
+const uniqueColors = [...new Set(data.map(item => item.color))].sort((a, b) => a.localeCompare(b));
+const uniqueSizes = [...new Set(data.map(item => item.size))].sort((a, b) => a - b);
+
+// Get the accordion div
+const accordion = document.getElementById("accordion");
+
+// Helper function to create an accordion section
+function createAccordionSection(title, items) {
+    // Create accordion item container
+    const section = document.createElement("div");
+    section.classList.add("accordion-item");
+
+    // Create accordion header
+    const header = document.createElement("div");
+    header.classList.add("accordion-header");
+    header.textContent = title;
+    section.appendChild(header);
+
+    // Create accordion content
+    const content = document.createElement("div");
+    content.classList.add("accordion-content");
+    content.style.display = "none"; // Initially hidden
+
+    // Populate content with items
+    items.forEach(item => {
+        const line = document.createElement("div");
+        line.textContent = item;
+        content.appendChild(line);
+    });
+    section.appendChild(content);
+
+    // Toggle visibility on header click
+    header.addEventListener("click", () => {
+        content.style.display = content.style.display === "block" ? "none" : "block";
+    });
+
+    return section;
+}
+
+// Create sections for each unique property
+accordion.appendChild(createAccordionSection("Box Numbers", uniqueBoxNumbers));
+accordion.appendChild(createAccordionSection("Style Codes", uniqueStyleCodes));
+accordion.appendChild(createAccordionSection("Colors", uniqueColors));
+accordion.appendChild(createAccordionSection("Sizes", uniqueSizes));
+
 const totalQuantity = data.reduce((accumulator, currentItem) => {
     return accumulator + currentItem.quantity;
 }, 0);
 
 console.log('Total Quantity:', totalQuantity);
 
-function Reset(){
+function Reset() {
     document.getElementById('styleCodeInput').value = ''
 
 }
+
 function generateTable() {
     const styleCode = document.getElementById("styleCodeInput").value.trim();
     if (!styleCode) {
@@ -2323,13 +2364,14 @@ function generateTable() {
     const totalRow = document.createElement("tr");
     const totalLabelCell = document.createElement("td");
     totalLabelCell.textContent = "Total";
+    totalLabelCell.colSpan = sizes.length + 1
     totalRow.appendChild(totalLabelCell);
 
-    sizes.forEach(size => {
-        const totalCell = document.createElement("td");
-        totalCell.textContent = sizeTotals[size];
-        totalRow.appendChild(totalCell);
-    });
+    // sizes.forEach(size => {
+    //     const totalCell = document.createElement("td");
+    //     totalCell.textContent = '' //sizeTotals[size];
+    //     totalRow.appendChild(totalCell);
+    // });
 
     const grandTotalCell = document.createElement("td");
     grandTotalCell.textContent = grandTotal;

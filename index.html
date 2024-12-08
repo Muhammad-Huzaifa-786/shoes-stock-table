@@ -107,6 +107,29 @@
         #download button{
             margin-top: 100px;
         }
+        /* Styling for the accordion */
+.accordion-item {
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.accordion-content {
+    display: none; /* Initially hidden */
+    padding: 10px;
+    font-size: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+}
+
     </style>
 </head>
 
@@ -124,6 +147,9 @@
         </div>
     </center>
     <div id="boxnum"></div>
+    <div id="accordion">
+    </div>
+    
     <!-- Include the external libraries for PDF and Excel export -->
 
     <!-- Include jsPDF library -->
