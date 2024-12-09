@@ -2214,7 +2214,9 @@ const data = [
     { "box_number": 213, "style_code": "X0DL2015", "color": "Moran", "size": 11, "quantity": 1 }
 ]
 const uniqueStyleCodes = [...new Set(data.map(item => item.style_code))].sort();
+const uniqueBoxNumber = [...new Set(data.map(item => item.box_number))]
 const accordion = document.getElementById("accordion");
+const accordions = document.getElementById("accordions");
 function createAccordionSection(title, items) {
     // Create accordion item container
     const section = document.createElement("div");
@@ -2266,12 +2268,80 @@ function createAccordionSection(title, items) {
 
     // Toggle visibility on header click
     header.addEventListener("click", () => {
-        content.style.display = content.style.display === "block" ? "none" : "block";
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+            content.scrollTop = 0; // Reset scroll to the top of the content
+        }
+    });
+
+    return section;
+}
+function createAccordionSections(title, items) {
+    // Create accordion item container
+    const section = document.createElement("div");
+    section.classList.add("accordions-item");
+
+    // Create accordion header
+    const header = document.createElement("div");
+    header.classList.add("accordions-header");
+    header.textContent = title;
+
+    section.appendChild(header);
+
+    // Create accordion content
+    const content = document.createElement("div");
+    content.classList.add("accordions-content");
+    // Populate content with items
+    items.forEach(item => {
+        const line = document.createElement("div");
+        line.style.display = "flex";
+        line.style.alignItems = "center";
+        line.style.justifyContent = "space-between";
+        line.style.margin = "auto";
+        line.style.width = "190px";
+
+
+        // Text for the item
+        const text = document.createElement("span");
+        text.textContent = item;
+
+        // Copy button for the item
+        const copyButton = document.createElement("button");
+        copyButton.textContent = "Show";
+        copyButton.classList.add("copy-button");
+        copyButton.style.marginLeft = "10px";
+        copyButton.style.marginTop = "10px";
+        copyButton.addEventListener("click", () => {
+
+            document.getElementById("styleCodeInputbox").value = item
+            generateTablebox()
+            window.scrollTo(0, 200)
+        });
+        line.appendChild(text);
+        line.appendChild(copyButton);
+        content.appendChild(line);
+    });
+
+    section.appendChild(content);
+
+    // Toggle visibility on header click
+    header.addEventListener("click", () => {
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+            content.scrollTop = 0 ;
+             // Reset scroll to the top of the content
+        }
     });
 
     return section;
 }
 accordion.appendChild(createAccordionSection("Art No.", uniqueStyleCodes));
+accordions.appendChild(createAccordionSections("Box.", uniqueBoxNumber));
+
 function Reset() {
     document.getElementById('styleCodeInput').value = ''
 }
@@ -2532,3 +2602,22 @@ document.getElementById("styleCodeInputbox").addEventListener("keydown", functio
     }
 });
 
+// Select the scroll-to-top button
+const scrollToTopButton = document.getElementById("scrollToToptop");
+
+// Listen for scroll events
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 220) {
+        scrollToTopButton.style.display = "flex"; // Show the button
+    } else {
+        scrollToTopButton.style.display = "none"; // Hide the button
+    }
+});
+
+// Add click event to the button
+scrollToTopButton.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" // Smooth scrolling effect
+    });
+});
