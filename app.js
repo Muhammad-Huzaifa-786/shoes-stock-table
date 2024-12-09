@@ -2261,8 +2261,8 @@ function createAccordionSection(title, items) {
             document.querySelector('#container').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
-              });
-              
+            });
+
         });
         line.appendChild(text);
         line.appendChild(copyButton);
@@ -2280,7 +2280,7 @@ function createAccordionSection(title, items) {
             document.querySelector('#accordion').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
-              }); // Reset scroll to the top of the content
+            }); // Reset scroll to the top of the content
         }
     });
 
@@ -2328,8 +2328,8 @@ function createAccordionSections(title, items) {
             document.querySelector('#containerbox').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
-              });
-              
+            });
+
         });
         line.appendChild(text);
         line.appendChild(copyButton);
@@ -2347,8 +2347,8 @@ function createAccordionSections(title, items) {
             document.querySelector('#accordions').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
-              });
-             // Reset scroll to the top of the content
+            });
+            // Reset scroll to the top of the content
         }
     });
 
@@ -2359,9 +2359,12 @@ accordions.appendChild(createAccordionSections("Box.", uniqueBoxNumber));
 
 function Reset() {
     document.getElementById('styleCodeInput').value = ''
+
 }
 function Resetbox() {
     document.getElementById('styleCodeInputbox').value = ''
+
+
 }
 function generateTable() {
     const styleCode = document.getElementById("styleCodeInput").value.trim();
@@ -2616,11 +2619,8 @@ document.getElementById("styleCodeInputbox").addEventListener("keydown", functio
         generateTablebox(); // Call the function when Enter is pressed
     }
 });
-
 // Select the scroll-to-top button
 const scrollToTopButton = document.getElementById("scrollToToptop");
-
-// Listen for scroll events
 window.addEventListener("scroll", () => {
     if (window.scrollY > 220) {
         scrollToTopButton.style.display = "flex"; // Show the button
@@ -2628,7 +2628,6 @@ window.addEventListener("scroll", () => {
         scrollToTopButton.style.display = "none"; // Hide the button
     }
 });
-
 // Add click event to the button
 scrollToTopButton.addEventListener("click", () => {
     window.scrollTo({
@@ -2636,3 +2635,53 @@ scrollToTopButton.addEventListener("click", () => {
         behavior: "smooth" // Smooth scrolling effect
     });
 });
+function container() {
+    // Get the content of the container div
+    var divContents = document.getElementById("printArt").innerHTML;
+
+    // Open a new window for printing
+    var printWindow = window.open();
+
+    // Write the HTML structure for the print window
+    printWindow.document.write('<html><head><title>Print</title>');
+
+    // Add necessary CSS to ensure borders and other styles are applied
+    printWindow.document.write('<style>');
+    printWindow.document.write('table {border-collapse: collapse; width: 100%;}'); // Ensure the table has proper width and border collapse
+    printWindow.document.write('table td, table th {border: 1px solid black; padding: 5px; text-align: left;}'); // Proper borders and padding
+    printWindow.document.write('</style>');
+
+    // Write the content of the div to be printed
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(divContents);
+    printWindow.document.write('</body></html>');
+
+    // Close the document and trigger the print dialog
+    printWindow.document.close();
+    printWindow.print();
+}
+function containerbox() {
+    // Get the content of the container div
+    var divContents = document.getElementById("PrintBox").innerHTML;
+
+    // Open a new window for printing
+    var printWindow = window.open();
+
+    // Write the HTML structure for the print window
+    printWindow.document.write('<html><head><title>Print</title>');
+
+    // Add necessary CSS to ensure borders and other styles are applied
+    printWindow.document.write('<style>');
+    printWindow.document.write('table {border-collapse: collapse; width: 100%;}'); // Ensure the table has proper width and border collapse
+    printWindow.document.write('table td, table th {border: 1px solid black; padding: 5px; text-align: left;}'); // Proper borders and padding
+    printWindow.document.write('</style>');
+
+    // Write the content of the div to be printed
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(divContents);
+    printWindow.document.write('</body></html>');
+
+    // Close the document and trigger the print dialog
+    printWindow.document.close();
+    printWindow.print();
+}

@@ -72,12 +72,25 @@ table tr td:first-child {
     font-weight: bolder;
 
 }
-.container,.containerbox {
+
+.container,
+.containerbox {
     padding: 20px;
-    background-color: #f9f9f9; /* Light background for distinction */
-    border: 1px solid #ddd; /* Subtle border */
-    border-radius: 10px; /* Smooth corners */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    background-color: #f9f9f9;
+    /* Light background for distinction */
+    border: 1px solid #ddd;
+    /* Subtle border */
+    border-radius: 10px;
+    /* Smooth corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for depth */
+    overflow-x: auto;
+}
+
+#tableContainerbox,
+#resultTablebox,
+#tableContainer,
+#resultTable {
     overflow-x: auto;
 }
 
@@ -87,16 +100,19 @@ input {
     padding: 10px;
     width: 140px;
     font-size: 16px;
-    background-color: #eaf7ff; /* Light blue tint */
+    background-color: #eaf7ff;
+    /* Light blue tint */
     border-radius: 7px;
     border: 2px solid #ccc;
     height: 22px;
-    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+    /* Subtle inner shadow */
 }
 
 
 button:hover {
-    background-color: #000000; /* Darker shade */
+    background-color: #000000;
+    /* Darker shade */
     color: azure;
     transition: 0.7s;
     border: 2px solid yellow;
@@ -125,10 +141,11 @@ button {
 }
 
 .accordion-header {
-    background-color: #f1f1f1;
+    background-color: #e6f7ff;
     cursor: pointer;
     padding: 10px;
     font-weight: bold;
+    text-align: center;
 }
 
 .accordion-content {
@@ -149,10 +166,12 @@ button {
 }
 
 .accordions-header {
-    background-color: #f1f1f1;
+    background-color: #e6f7ff;
     cursor: pointer;
     padding: 10px;
     font-weight: bold;
+    text-align: center;
+
 }
 
 .accordions-content {
@@ -204,6 +223,7 @@ button {
     font-weight: 600;
     background-color: #e6f7ff;
 }
+
 /* Scroll-to-top button styling */
 .scroll-to-top {
     position: fixed;
@@ -211,16 +231,19 @@ button {
     right: 20px;
     width: 30px;
     height: 40px;
-    background-color: #007bff; /* Blue button */
+    background-color: #007bff;
+    /* Blue button */
     color: white;
     border: none;
     border-radius: 10px;
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     align-items: center;
     justify-content: center;
     font-size: 22px;
     cursor: pointer;
-    z-index: 1000; /* Ensure it stays above other content */
+    z-index: 1000;
+    /* Ensure it stays above other content */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -228,5 +251,6 @@ button {
 .scroll-to-top:hover {
     background-color: #78b9ff;
     color: #000;
-    border: none; /* Darker blue on hover */
+    border: none;
+    /* Darker blue on hover */
 }
