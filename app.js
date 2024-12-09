@@ -2381,6 +2381,10 @@ function createAccordionSections(title, quan, items) {
     header.addEventListener("click", () => {
         if (content.style.display === "block") {
             content.style.display = "none";
+            document.querySelector('#containerbox').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
             
         } else {
             content.style.display = "block";
