@@ -2214,7 +2214,8 @@ const data = [
     { "box_number": 213, "style_code": "X0DL2015", "color": "Moran", "size": 11, "quantity": 1 }
 ]
 const uniqueStyleCodes = [...new Set(data.map(item => item.style_code))].sort();
-const uniqueBoxNumber = [...new Set(data.map(item => item.box_number))]
+const uniqueBoxNumber = [...new Set(data.map(item => item.box_number))].sort((a, b) => a - b); // Numerical sort
+
 const accordion = document.getElementById("accordion");
 const accordions = document.getElementById("accordions");
 function createAccordionSection(title, items) {
@@ -2257,7 +2258,11 @@ function createAccordionSection(title, items) {
 
             document.getElementById("styleCodeInput").value = item
             generateTable()
-            window.scrollTo(0, 0)
+            document.querySelector('#container').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+              
         });
         line.appendChild(text);
         line.appendChild(copyButton);
@@ -2272,7 +2277,10 @@ function createAccordionSection(title, items) {
             content.style.display = "none";
         } else {
             content.style.display = "block";
-            content.scrollTop = 0; // Reset scroll to the top of the content
+            document.querySelector('#accordion').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              }); // Reset scroll to the top of the content
         }
     });
 
@@ -2317,7 +2325,11 @@ function createAccordionSections(title, items) {
 
             document.getElementById("styleCodeInputbox").value = item
             generateTablebox()
-            window.scrollTo(0, 200)
+            document.querySelector('#containerbox').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+              
         });
         line.appendChild(text);
         line.appendChild(copyButton);
@@ -2332,7 +2344,10 @@ function createAccordionSections(title, items) {
             content.style.display = "none";
         } else {
             content.style.display = "block";
-            content.scrollTop = 0 ;
+            document.querySelector('#accordions').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
              // Reset scroll to the top of the content
         }
     });
