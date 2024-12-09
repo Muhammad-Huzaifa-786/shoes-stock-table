@@ -2648,7 +2648,7 @@ function container() {
     // Add necessary CSS to ensure borders and other styles are applied
     printWindow.document.write('<style>');
     printWindow.document.write('table {border-collapse: collapse; width: 100%;}'); // Ensure the table has proper width and border collapse
-    printWindow.document.write('table td, table th {border: 1px solid black; padding: 5px; text-align: left;}'); // Proper borders and padding
+    printWindow.document.write('table td, table th {border: 1px solid black; padding: 5px; text-align: center;}'); // Proper borders and padding
     printWindow.document.write('</style>');
 
     // Write the content of the div to be printed
@@ -2673,7 +2673,7 @@ function containerbox() {
     // Add necessary CSS to ensure borders and other styles are applied
     printWindow.document.write('<style>');
     printWindow.document.write('table {border-collapse: collapse; width: 100%;}'); // Ensure the table has proper width and border collapse
-    printWindow.document.write('table td, table th {border: 1px solid black; padding: 5px; text-align: left;}'); // Proper borders and padding
+    printWindow.document.write('table td, table th {border: 1px solid black; padding: 5px; text-align: center;}'); // Proper borders and padding
     printWindow.document.write('</style>');
 
     // Write the content of the div to be printed
