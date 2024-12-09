@@ -2215,13 +2215,24 @@ const data = [
 ]
 const uniqueStyleCodes = [...new Set(data.map(item => item.style_code))].sort();
 const uniqueBoxNumber = [...new Set(data.map(item => item.box_number))].sort((a, b) => a - b); // Numerical sort
-
+const AllArticleQuantity = uniqueStyleCodes.map(styleCode => {
+    return data
+        .filter(item => item.style_code === styleCode) // Filter items with the same style code
+        .reduce((sum, item) => sum + item.quantity, 0); // Sum their quantities
+});
+const AllBoxQuantity = uniqueBoxNumber.map(styleCode => {
+    return data
+        .filter(item => item.box_number === styleCode) // Filter items with the same style code
+        .reduce((sum, item) => sum + item.quantity, 0); // Sum their quantities
+});
 const accordion = document.getElementById("accordion");
 const accordions = document.getElementById("accordions");
-function createAccordionSection(title, items) {
+function createAccordionSection(title, quan, items) {
+
     // Create accordion item container
     const section = document.createElement("div");
     section.classList.add("accordion-item");
+
 
     // Create accordion header
     const header = document.createElement("div");
@@ -2235,18 +2246,34 @@ function createAccordionSection(title, items) {
     content.classList.add("accordion-content");
 
     // Populate content with items
-    items.forEach(item => {
+    items.forEach((item, index) => {
         const line = document.createElement("div");
         line.style.display = "flex";
         line.style.alignItems = "center";
         line.style.justifyContent = "space-between";
         line.style.margin = "auto";
-        line.style.width = "190px";
-
+        line.style.width = "320px";
 
         // Text for the item
+        // Sum their quantities
+
+        const textSno = document.createElement("span");
+        textSno.textContent = index + 1;
+        textSno.style.width = '50px'
+
+
         const text = document.createElement("span");
         text.textContent = item;
+        text.style.width = '110px'
+
+
+
+        const textQuantity = document.createElement("span");
+        textQuantity.textContent = quan[index];
+        textQuantity.style.width = '50px'
+        textQuantity.style.marginLeft = '20px'
+
+
 
         // Copy button for the item
         const copyButton = document.createElement("button");
@@ -2264,7 +2291,9 @@ function createAccordionSection(title, items) {
             });
 
         });
+        line.appendChild(textSno);
         line.appendChild(text);
+        line.appendChild(textQuantity);
         line.appendChild(copyButton);
         content.appendChild(line);
     });
@@ -2275,6 +2304,10 @@ function createAccordionSection(title, items) {
     header.addEventListener("click", () => {
         if (content.style.display === "block") {
             content.style.display = "none";
+            document.querySelector('#container').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         } else {
             content.style.display = "block";
             document.querySelector('#accordion').scrollIntoView({
@@ -2286,7 +2319,7 @@ function createAccordionSection(title, items) {
 
     return section;
 }
-function createAccordionSections(title, items) {
+function createAccordionSections(title, quan, items) {
     // Create accordion item container
     const section = document.createElement("div");
     section.classList.add("accordions-item");
@@ -2302,18 +2335,23 @@ function createAccordionSections(title, items) {
     const content = document.createElement("div");
     content.classList.add("accordions-content");
     // Populate content with items
-    items.forEach(item => {
+    items.forEach((item, index) => {
         const line = document.createElement("div");
         line.style.display = "flex";
         line.style.alignItems = "center";
         line.style.justifyContent = "space-between";
         line.style.margin = "auto";
-        line.style.width = "190px";
+        line.style.width = "240px";
 
 
         // Text for the item
         const text = document.createElement("span");
+        text.style.width = '50px'
         text.textContent = item;
+
+        const textQun = document.createElement("span");
+        textQun.style.width = '50px'
+        textQun.textContent = quan[index];
 
         // Copy button for the item
         const copyButton = document.createElement("button");
@@ -2332,6 +2370,7 @@ function createAccordionSections(title, items) {
 
         });
         line.appendChild(text);
+        line.appendChild(textQun);
         line.appendChild(copyButton);
         content.appendChild(line);
     });
@@ -2342,6 +2381,7 @@ function createAccordionSections(title, items) {
     header.addEventListener("click", () => {
         if (content.style.display === "block") {
             content.style.display = "none";
+            
         } else {
             content.style.display = "block";
             document.querySelector('#accordions').scrollIntoView({
@@ -2354,8 +2394,8 @@ function createAccordionSections(title, items) {
 
     return section;
 }
-accordion.appendChild(createAccordionSection("Art No.", uniqueStyleCodes));
-accordions.appendChild(createAccordionSections("Box.", uniqueBoxNumber));
+accordion.appendChild(createAccordionSection("Art No.", AllArticleQuantity, uniqueStyleCodes));
+accordions.appendChild(createAccordionSections("Box.", AllBoxQuantity, uniqueBoxNumber));
 
 function Reset() {
     document.getElementById('styleCodeInput').value = ''
@@ -2414,10 +2454,8 @@ function generateTable() {
         groupedData[item.color][item.size] += item.quantity;
     });
 
-    // Generate unique sizes
     const sizes = [...new Set(filteredData.map(item => item.size))].sort((a, b) => a - b);
 
-    // Calculate totals
     const sizeTotals = {}; // Total for each size
     let grandTotal = 0; // Grand total for all sizes
 
@@ -2535,10 +2573,8 @@ function generateTablebox() {
         groupedData[item.color][item.size] += item.quantity;
     });
 
-    // Generate unique sizes
     const sizes = [...new Set(filteredData.map(item => item.size))].sort((a, b) => a - b);
 
-    // Calculate totals
     const sizeTotals = {}; // Total for each size
     let grandTotal = 0; // Grand total for all sizes
 
@@ -2619,8 +2655,9 @@ document.getElementById("styleCodeInputbox").addEventListener("keydown", functio
         generateTablebox(); // Call the function when Enter is pressed
     }
 });
-// Select the scroll-to-top button
 const scrollToTopButton = document.getElementById("scrollToToptop");
+const refresh = document.getElementById("refresh");
+
 window.addEventListener("scroll", () => {
     if (window.scrollY > 220) {
         scrollToTopButton.style.display = "flex"; // Show the button
@@ -2634,6 +2671,9 @@ scrollToTopButton.addEventListener("click", () => {
         top: 0,
         behavior: "smooth" // Smooth scrolling effect
     });
+});
+refresh.addEventListener("click", () => {
+   location.reload()
 });
 function container() {
     // Get the content of the container div
