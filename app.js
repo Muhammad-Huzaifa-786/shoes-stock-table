@@ -1,4 +1,4 @@
-const data = [
+const datas = [
     { "box_number": 6, "style_code": "B0RL5053", "color": "light gray", "size": 14, "quantity": 1 },
     { "box_number": 6, "style_code": "B0RL5053", "color": "light gray", "size": 15, "quantity": 1 },
     { "box_number": 8, "style_code": "B0RL5053", "color": "light gray", "size": 16, "quantity": 4 },
@@ -35,8 +35,6 @@ const data = [
     { "box_number": 76, "style_code": "B1BA5023", "color": "Blue", "size": 13, "quantity": 14 },
     { "box_number": 76, "style_code": "B1BA5023", "color": "Lotus root starch", "size": 12, "quantity": 16 },
     { "box_number": 133, "style_code": "B1BA5023", "color": "Lotus root starch", "size": 14, "quantity": 69 },
-    { "box_number": 20, "style_code": "H0DA0092", "color": "Gray", "size": 14, "quantity": 1 },
-    { "box_number": 20, "style_code": "H0DA0092", "color": "Pink", "size": 14, "quantity": 1 },
     { "box_number": 65, "style_code": "H0DA0108", "color": "Gray", "size": 12, "quantity": 8 },
     { "box_number": 66, "style_code": "H0DA0108", "color": "Gray", "size": 12, "quantity": 1 },
     { "box_number": 65, "style_code": "H0DA0108", "color": "Gray", "size": 13, "quantity": 8 },
@@ -58,16 +56,6 @@ const data = [
     { "box_number": 66, "style_code": "H0DA0108", "color": "Pink", "size": 16, "quantity": 9 },
     { "box_number": 20, "style_code": "H0DA0111", "color": "Black", "size": 14, "quantity": 2 },
     { "box_number": 20, "style_code": "H0DA0111", "color": "White", "size": 18, "quantity": 1 },
-    { "box_number": 20, "style_code": "H0DA0117", "color": "Black", "size": 16, "quantity": 1 },
-    { "box_number": 20, "style_code": "H0DA0118", "color": "Pink", "size": 15, "quantity": 1 },
-    { "box_number": 20, "style_code": "H0DA0118", "color": "Pink", "size": 23, "quantity": 1 },
-    { "box_number": 20, "style_code": "H0DA0118", "color": "Tibetan Blue", "size": 19, "quantity": 1 },
-    { "box_number": 37, "style_code": "H0DA0157", "color": "white gray green", "size": 19, "quantity": 2 },
-    { "box_number": 37, "style_code": "H0DA0157", "color": "white powder", "size": 19, "quantity": 1 },
-    { "box_number": 37, "style_code": "H0DA0157", "color": "white/grey green", "size": 14, "quantity": 1 },
-    { "box_number": 37, "style_code": "H0DA0157", "color": "White/grey green", "size": 15, "quantity": 2 },
-    { "box_number": 37, "style_code": "H0DA0157", "color": "white/pink", "size": 16, "quantity": 2 },
-    { "box_number": 37, "style_code": "H0DA0157", "color": "white/pink", "size": 18, "quantity": 1 },
     { "box_number": 37, "style_code": "H0DA0166", "color": "Black", "size": 14, "quantity": 1 },
     { "box_number": 20, "style_code": "H0DA0166", "color": "Black", "size": 16, "quantity": 1 },
     { "box_number": 67, "style_code": "H1DA0006", "color": "light blu", "size": 8, "quantity": 1 },
@@ -124,19 +112,6 @@ const data = [
     { "box_number": 62, "style_code": "H1RA0069", "color": "Black", "size": 14, "quantity": 1 },
     { "box_number": 66, "style_code": "H1RA0069", "color": "Black", "size": 14, "quantity": 1 },
     { "box_number": 66, "style_code": "H1RA0069", "color": "Black", "size": 16, "quantity": 3 },
-    { "box_number": 3, "style_code": "H1RA0077", "color": "bright yellow", "size": 12, "quantity": 1 },
-    { "box_number": 3, "style_code": "H1RA0077", "color": "bright yellow", "size": 14, "quantity": 1 },
-    { "box_number": 3, "style_code": "H1RA0077", "color": "Ma Hui", "size": 13, "quantity": 1 },
-    { "box_number": 3, "style_code": "H1RA0077", "color": "tender yellow", "size": 13, "quantity": 1 },
-    { "box_number": 3, "style_code": "H1RA0091", "color": "Blue", "size": 12, "quantity": 1 },
-    { "box_number": 3, "style_code": "H1RA0091", "color": "Blue", "size": 13, "quantity": 1 },
-    { "box_number": 3, "style_code": "H1RA0091", "color": "Gray", "size": 14, "quantity": 4 },
-    { "box_number": 3, "style_code": "H1RA0093", "color": "Light Khaki", "size": 11, "quantity": 5 },
-    { "box_number": 3, "style_code": "H1RA0093", "color": "Light Khaki", "size": 12, "quantity": 1 },
-    { "box_number": 3, "style_code": "H1RA0127S", "color": "Big Red", "size": 17, "quantity": 1 },
-    { "box_number": 3, "style_code": "H1RA0127S", "color": "Big Red", "size": 18, "quantity": 1 },
-    { "box_number": 3, "style_code": "H1RA0129S", "color": "Sapphire", "size": 15, "quantity": 1 },
-    { "box_number": 3, "style_code": "H1RQ0566", "color": "Red", "size": 15, "quantity": 1 },
     { "box_number": 81, "style_code": "H2DA0026", "color": "light green", "size": 11, "quantity": 9 },
     { "box_number": 81, "style_code": "H2DA0026", "color": "light green", "size": 11, "quantity": 2 },
     { "box_number": 113, "style_code": "H2DA0026", "color": "light green", "size": 11, "quantity": 4 },
@@ -190,8 +165,6 @@ const data = [
     { "box_number": 61, "style_code": "H2RL0206", "color": "Meat powder", "size": 15, "quantity": 8 },
     { "box_number": 60, "style_code": "H2RL0206", "color": "Meat powder", "size": 16, "quantity": 7 },
     { "box_number": 61, "style_code": "H2RL0206", "color": "Meat powder", "size": 16, "quantity": 7 },
-    { "box_number": 37, "style_code": "H2RQ0506", "color": "Pink", "size": 12, "quantity": 1 },
-    { "box_number": 37, "style_code": "H2RQ0610", "color": "dark gray", "size": 17, "quantity": 1 },
     { "box_number": 105, "style_code": "HE106018", "color": "Gray", "size": 12, "quantity": 14 },
     { "box_number": 106, "style_code": "HE106018", "color": "Gray", "size": 12, "quantity": 3 },
     { "box_number": 105, "style_code": "HE106018", "color": "Gray", "size": 13, "quantity": 10 },
@@ -441,7 +414,6 @@ const data = [
     { "box_number": 39, "style_code": "X0DL2031", "color": "Navy blue", "size": 22, "quantity": 5 },
     { "box_number": 36, "style_code": "X0DL2031", "color": "Navy blue", "size": 23, "quantity": 10 },
     { "box_number": 36, "style_code": "X0DL2032", "color": "Black", "size": 22, "quantity": 1 },
-    { "box_number": 25, "style_code": "X0DL2036", "color": "Pink", "size": 23, "quantity": 1 },
     { "box_number": 58, "style_code": "X0DL2037", "color": "Black", "size": 19, "quantity": 6 },
     { "box_number": 25, "style_code": "X0DL2037", "color": "Black", "size": 23, "quantity": 9 },
     { "box_number": 58, "style_code": "X0DL2037", "color": "dark gray", "size": 17, "quantity": 9 },
@@ -609,14 +581,9 @@ const data = [
     { "box_number": 25, "style_code": "X0RL1280", "color": "Pink", "size": 18, "quantity": 1 },
     { "box_number": 36, "style_code": "X0RL1385", "color": "Black", "size": 17, "quantity": 1 },
     { "box_number": 29, "style_code": "X0RL1385", "color": "Light green", "size": 17, "quantity": 1 },
-    { "box_number": 21, "style_code": "X0RL1389", "color": "Black", "size": 17, "quantity": 1 },
-    { "box_number": 21, "style_code": "X0RL1389", "color": "Black", "size": 18, "quantity": 1 },
     { "box_number": 24, "style_code": "X0RL1391", "color": "Gray", "size": 16, "quantity": 1 },
     { "box_number": 24, "style_code": "X0RL1391", "color": "Gray", "size": 17, "quantity": 1 },
     { "box_number": 21, "style_code": "X0RL1391", "color": "Light coffee", "size": 14, "quantity": 1 },
-    { "box_number": 44, "style_code": "X0RQ1753", "color": "Yellow", "size": 14, "quantity": 1 },
-    { "box_number": 44, "style_code": "X0RQ2018", "color": "Black", "size": 22, "quantity": 1 },
-    { "box_number": 44, "style_code": "X0RQ2021", "color": "Pink", "size": 18, "quantity": 1 },
     { "box_number": 44, "style_code": "X0RQ2028", "color": "Big Red", "size": 16, "quantity": 1 },
     { "box_number": 37, "style_code": "X1DA1057", "color": "Orange", "size": 14, "quantity": 6 },
     { "box_number": 11, "style_code": "X1DA1058", "color": "Blue", "size": 12, "quantity": 4 },
@@ -863,13 +830,6 @@ const data = [
     { "box_number": 8, "style_code": "X1RL1326S", "color": "no", "size": "", "quantity": 2 },
     { "box_number": 63, "style_code": "X1RL1326S", "color": "no", "size": "", "quantity": 1 },
     { "box_number": 63, "style_code": "X1RL1326S", "color": "no", "size": "", "quantity": 1 },
-    { "box_number": 37, "style_code": "X1RQ1637", "color": "Coffee", "size": 11, "quantity": 2 },
-    { "box_number": 37, "style_code": "X1RQ1637", "color": "coffee", "size": 12, "quantity": 1 },
-    { "box_number": 37, "style_code": "X1RQ1637", "color": "Coffee", "size": 13, "quantity": 3 },
-    { "box_number": 44, "style_code": "X1RQ1637", "color": "dark gray", "size": 10, "quantity": 1 },
-    { "box_number": 37, "style_code": "X1RQ1637", "color": "dark gray", "size": 11, "quantity": 1 },
-    { "box_number": 37, "style_code": "X1RQ1637", "color": "dark gray", "size": 12, "quantity": 3 },
-    { "box_number": 37, "style_code": "X1RQ1637", "color": "dark gray", "size": 13, "quantity": 1 },
     { "box_number": 37, "style_code": "X1RQ1638", "color": "dark gray", "size": 11, "quantity": 6 },
     { "box_number": 37, "style_code": "X1RQ1638", "color": "dark gray", "size": 12, "quantity": 3 },
     { "box_number": 37, "style_code": "X1RQ1638", "color": "dark gray", "size": 13, "quantity": 5 },
@@ -877,11 +837,6 @@ const data = [
     { "box_number": 37, "style_code": "X1RQ1638", "color": "Gray", "size": 11, "quantity": 5 },
     { "box_number": 37, "style_code": "X1RQ1638", "color": "Gray", "size": 12, "quantity": 5 },
     { "box_number": 37, "style_code": "X1RQ1638", "color": "Gray", "size": 13, "quantity": 5 },
-    { "box_number": 44, "style_code": "X1RQ1667", "color": "Brown", "size": 11, "quantity": 1 },
-    { "box_number": 44, "style_code": "X1RQ1668", "color": "Black", "size": 14, "quantity": 4 },
-    { "box_number": 44, "style_code": "X1RQ1668", "color": "blue gray", "size": 11, "quantity": 1 },
-    { "box_number": 44, "style_code": "X1RQ1668", "color": "blue gray", "size": 14, "quantity": 4 },
-    { "box_number": 44, "style_code": "X1RQ1679", "color": "dark gray", "size": 16, "quantity": 1 },
     { "box_number": 44, "style_code": "X2DA1029", "color": "dark gray", "size": 12, "quantity": 12 },
     { "box_number": 44, "style_code": "X2DA1029", "color": "dark gray", "size": 13, "quantity": 11 },
     { "box_number": 44, "style_code": "X2DA1029", "color": "light green", "size": 12, "quantity": 1 },
@@ -909,10 +864,6 @@ const data = [
     { "box_number": 46, "style_code": "X2DA1072", "color": "Yellow", "size": 13, "quantity": 2 },
     { "box_number": 44, "style_code": "X2DA1072", "color": "Yellow", "size": 14, "quantity": 4 },
     { "box_number": 46, "style_code": "X2DA1072", "color": "Yellow", "size": 14, "quantity": 1 },
-    { "box_number": 44, "style_code": "X2DA1073", "color": "Green", "size": 13, "quantity": 5 },
-    { "box_number": 46, "style_code": "X2DA1169", "color": "Meat powder", "size": 16, "quantity": 4 },
-    { "box_number": 46, "style_code": "X2DA1169", "color": "Meat powder", "size": 17, "quantity": 6 },
-    { "box_number": 46, "style_code": "X2DA1169", "color": "Meat powder", "size": 18, "quantity": 6 },
     { "box_number": 95, "style_code": "X2DL2010", "color": "Dark pink", "size": 11, "quantity": 3 },
     { "box_number": 96, "style_code": "X2DL2010", "color": "Dark pink", "size": 11, "quantity": 1 },
     { "box_number": 96, "style_code": "X2DL2010", "color": "Dark pink", "size": 11, "quantity": 1 },
@@ -1318,13 +1269,6 @@ const data = [
     { "box_number": 44, "style_code": "X2RQ1652", "color": "Big Red", "size": 10, "quantity": 1 },
     { "box_number": 44, "style_code": "X2RQ1652", "color": "Gray", "size": 10, "quantity": 1 },
     { "box_number": 44, "style_code": "X2RQ1652", "color": "Pink", "size": 12, "quantity": 1 },
-    { "box_number": 3, "style_code": "XE100038", "color": "Gray", "size": 12, "quantity": 1 },
-    { "box_number": 3, "style_code": "XE100038", "color": "Gray", "size": 13, "quantity": 2 },
-    { "box_number": 6, "style_code": "XE100038", "color": "Gray", "size": 13, "quantity": 1 },
-    { "box_number": 3, "style_code": "XE100038", "color": "Gray", "size": 14, "quantity": 2 },
-    { "box_number": 3, "style_code": "XE100038", "color": "Gray", "size": 15, "quantity": 3 },
-    { "box_number": 4, "style_code": "XE100038", "color": "Pink", "size": 15, "quantity": 1 },
-    { "box_number": 6, "style_code": "XE100038", "color": "Pink", "size": 15, "quantity": 1 },
     { "box_number": 41, "style_code": "XE100039", "color": "Blue", "size": 12, "quantity": 2 },
     { "box_number": 44, "style_code": "XE100039", "color": "Blue", "size": 12, "quantity": 2 },
     { "box_number": 41, "style_code": "XE100039", "color": "Blue", "size": 13, "quantity": 6 },
@@ -1351,10 +1295,6 @@ const data = [
     { "box_number": 43, "style_code": "XE100039", "color": "Yellow", "size": 15, "quantity": 5 },
     { "box_number": 41, "style_code": "XE100039", "color": "Yellow", "size": 16, "quantity": 1 },
     { "box_number": 43, "style_code": "XE100039", "color": "Yellow", "size": 16, "quantity": 7 },
-    { "box_number": 14, "style_code": "XE100051", "color": "Apricot", "size": 13, "quantity": 1 },
-    { "box_number": 14, "style_code": "XE100051", "color": "Apricot", "size": 15, "quantity": 1 },
-    { "box_number": 15, "style_code": "XE100051", "color": "Big Red", "size": 13, "quantity": 1 },
-    { "box_number": 14, "style_code": "XE100051", "color": "Big Red", "size": 15, "quantity": 1 },
     { "box_number": 3, "style_code": "XE100052", "color": "Gray", "size": 12, "quantity": 1 },
     { "box_number": 3, "style_code": "XE100052", "color": "Gray", "size": 13, "quantity": 1 },
     { "box_number": 14, "style_code": "XE100052", "color": "Gray", "size": 13, "quantity": 1 },
@@ -1376,9 +1316,6 @@ const data = [
     { "box_number": 19, "style_code": "XE100053", "color": "Khaki", "size": 14, "quantity": 8 },
     { "box_number": 19, "style_code": "XE100053", "color": "Khaki", "size": 15, "quantity": 9 },
     { "box_number": 19, "style_code": "XE100053", "color": "Khaki", "size": 16, "quantity": 9 },
-    { "box_number": 19, "style_code": "XE100072", "color": "Black", "size": 17, "quantity": 1 },
-    { "box_number": 20, "style_code": "XE100072", "color": "Black", "size": 17, "quantity": 5 },
-    { "box_number": 14, "style_code": "XE100072", "color": "Navy blue", "size": 20, "quantity": 1 },
     { "box_number": 19, "style_code": "XE100073", "color": "Gray", "size": 14, "quantity": 2 },
     { "box_number": 19, "style_code": "XE100073", "color": "Gray", "size": 15, "quantity": 2 },
     { "box_number": 19, "style_code": "XE100073", "color": "Gray", "size": 16, "quantity": 2 },
@@ -1426,14 +1363,6 @@ const data = [
     { "box_number": 28, "style_code": "XE200272", "color": "Blue", "size": 18, "quantity": 3 },
     { "box_number": 17, "style_code": "XE200272", "color": "Blue", "size": 19, "quantity": 6 },
     { "box_number": 28, "style_code": "XE200272", "color": "Blue", "size": 19, "quantity": 6 },
-    { "box_number": 28, "style_code": "XE200275", "color": "blue gray", "size": 15, "quantity": 1 },
-    { "box_number": 28, "style_code": "XE200275", "color": "blue gray", "size": 19, "quantity": 2 },
-    { "box_number": 28, "style_code": "XE200275", "color": "Gray powder", "size": 15, "quantity": 2 },
-    { "box_number": 28, "style_code": "XE200275", "color": "Gray powder", "size": 17, "quantity": 1 },
-    { "box_number": 28, "style_code": "XE200275", "color": "Gray powder", "size": 19, "quantity": 2 },
-    { "box_number": 28, "style_code": "XE200275", "color": "Rice color", "size": 15, "quantity": 3 },
-    { "box_number": 28, "style_code": "XE200276", "color": "Beige", "size": 16, "quantity": 1 },
-    { "box_number": 28, "style_code": "XE200276", "color": "Beige", "size": 17, "quantity": 1 },
     { "box_number": 28, "style_code": "XE200277", "color": "Blue", "size": 15, "quantity": 2 },
     { "box_number": 28, "style_code": "XE200277", "color": "Blue", "size": 16, "quantity": 1 },
     { "box_number": 28, "style_code": "XE200277", "color": "Blue", "size": 18, "quantity": 1 },
@@ -2213,6 +2142,20 @@ const data = [
     { "box_number": 213, "style_code": "X0DL2015", "color": "Gray", "size": 11, "quantity": 1 },
     { "box_number": 213, "style_code": "X0DL2015", "color": "Moran", "size": 11, "quantity": 1 }
 ]
+
+// let filteredData = datas.filter(item => item.box_number >= 1 && item.box_number <= 60);
+// let groupedData = filteredData.reduce((acc, item) => {
+//     let key = item.style_code + "-" + item.color;
+//     if (!acc[key]) {
+//         acc[key] = { ...item, totalQuantity: 0 };
+//     }
+//     acc[key].totalQuantity += item.quantity;
+//     return acc;
+// }, {});
+// let data = Object.values(groupedData).filter(item => item.totalQuantity === item.quantity);
+
+let data = datas
+
 const uniqueStyleCodes = [...new Set(data.map(item => item.style_code))].sort();
 const uniqueBoxNumber = [...new Set(data.map(item => item.box_number))].sort((a, b) => a - b); // Numerical sort
 const AllArticleQuantity = uniqueStyleCodes.map(styleCode => {
@@ -2220,6 +2163,7 @@ const AllArticleQuantity = uniqueStyleCodes.map(styleCode => {
         .filter(item => item.style_code === styleCode) // Filter items with the same style code
         .reduce((sum, item) => sum + item.quantity, 0); // Sum their quantities
 });
+
 const AllBoxQuantity = uniqueBoxNumber.map(styleCode => {
     return data
         .filter(item => item.box_number === styleCode) // Filter items with the same style code
@@ -2245,13 +2189,13 @@ function createAccordionSection(title, quan, items, data) {
 
     // Loop through items and display the box number and other details
     items.forEach((item, index) => {
+
         // Find matching box data for the current item
         const boxInfo = data.filter(data => data.style_code === item);
-        // const uniqueBoxNumbers = new Set(boxInfo.map(data => data.box_number));
 
         const uniqueBoxNumbers = [...new Set(boxInfo.map(data => data.box_number))];
         uniqueBoxNumbers.sort((a, b) => a - b);
-        
+
 
         // Create the line for displaying item details
         const line = document.createElement("div");
@@ -2279,8 +2223,17 @@ function createAccordionSection(title, quan, items, data) {
 
         // Create the Box Number display
         const boxNumber = document.createElement("span");
-        boxNumber.textContent = Array.from(uniqueBoxNumbers).join(",");
-        boxNumber.style.width = '400px';
+        // boxNumber.textContent = Array.from(uniqueBoxNumbers).join(",");
+        // Get the string of box numbers
+        let boxText = Array.from(uniqueBoxNumbers).join(",");
+
+        // Create a new string where only the commas are wrapped in a span
+        let coloredText = boxText.replace(/,/g, '<span class="abc">,</span>');
+
+        // Set the innerHTML of the boxNumber element to the colored text
+        boxNumber.innerHTML = coloredText;
+
+        boxNumber.style.width = '800px';
         boxNumber.style.overflow = 'auto';
         boxNumber.style.marginLeft = '20px';
 
@@ -2337,7 +2290,7 @@ function createAccordionSection(title, quan, items, data) {
 
     return section;
 }
-function createAccordionSections(title, quan, items) {
+function createAccordionSections(title, quan, items, data) {
     // Create accordion item container
     const section = document.createElement("div");
     section.classList.add("accordions-item");
@@ -2354,12 +2307,16 @@ function createAccordionSections(title, quan, items) {
     content.classList.add("accordions-content");
     // Populate content with items
     items.forEach((item, index) => {
+
+        const boxInfo = data.filter(data => data.box_number === item);
+        const uniqueBoxNumbers = new Set(boxInfo.map(data => data.style_code));
+
         const line = document.createElement("div");
         line.style.display = "flex";
         line.style.alignItems = "center";
         line.style.justifyContent = "space-between";
         line.style.margin = "auto";
-        line.style.width = "240px";
+        line.style.width = "1100px";
 
 
         // Text for the item
@@ -2371,6 +2328,19 @@ function createAccordionSections(title, quan, items) {
         textQun.style.width = '50px'
         textQun.textContent = quan[index];
 
+        const boxNumber = document.createElement("span");
+        // boxNumber.textContent = Array.from(uniqueBoxNumbers).join(",");
+        let boxText = Array.from(uniqueBoxNumbers).join(",");
+
+        // Create a new string where only the commas are wrapped in a span
+        let coloredText = boxText.replace(/,/g, '<span class="abc">,</span>');
+
+        // Set the innerHTML of the boxNumber element to the colored text
+        boxNumber.innerHTML = coloredText;
+        
+        boxNumber.style.width = '800px';
+        boxNumber.style.overflow = 'auto';
+        boxNumber.style.marginLeft = '20px';
         // Copy button for the item
         const copyButton = document.createElement("button");
         copyButton.textContent = "Show";
@@ -2389,8 +2359,13 @@ function createAccordionSections(title, quan, items) {
         });
         line.appendChild(text);
         line.appendChild(textQun);
+        line.appendChild(boxNumber);
         line.appendChild(copyButton);
         content.appendChild(line);
+        if (index < items.length - 1) {
+            line.style.borderBottom = '1px solid black'
+
+        }
     });
 
     section.appendChild(content);
@@ -2417,7 +2392,7 @@ function createAccordionSections(title, quan, items) {
     return section;
 }
 accordion.appendChild(createAccordionSection("Art No.", AllArticleQuantity, uniqueStyleCodes, data));
-accordions.appendChild(createAccordionSections("Box.", AllBoxQuantity, uniqueBoxNumber));
+accordions.appendChild(createAccordionSections("Box.", AllBoxQuantity, uniqueBoxNumber, data));
 
 function Reset() {
     document.getElementById('styleCodeInput').value = ''
