@@ -2227,12 +2227,10 @@ const AllBoxQuantity = uniqueBoxNumber.map(styleCode => {
 });
 const accordion = document.getElementById("accordion");
 const accordions = document.getElementById("accordions");
-function createAccordionSection(title, quan, items) {
-
+function createAccordionSection(title, quan, items, data) {
     // Create accordion item container
     const section = document.createElement("div");
     section.classList.add("accordion-item");
-
 
     // Create accordion header
     const header = document.createElement("div");
@@ -2245,34 +2243,46 @@ function createAccordionSection(title, quan, items) {
     const content = document.createElement("div");
     content.classList.add("accordion-content");
 
-    // Populate content with items
+    // Loop through items and display the box number and other details
     items.forEach((item, index) => {
+        // Find matching box data for the current item
+        const boxInfo = data.filter(data => data.style_code === item);
+        // const uniqueBoxNumbers = new Set(boxInfo.map(data => data.box_number));
+
+        const uniqueBoxNumbers = [...new Set(boxInfo.map(data => data.box_number))];
+        uniqueBoxNumbers.sort((a, b) => a - b);
+        
+
+        // Create the line for displaying item details
         const line = document.createElement("div");
         line.style.display = "flex";
         line.style.alignItems = "center";
         line.style.justifyContent = "space-between";
         line.style.margin = "auto";
-        line.style.width = "320px";
+        line.style.width = "1100px";
 
-        // Text for the item
-        // Sum their quantities
-
+        // Text for the item (S.no)
         const textSno = document.createElement("span");
         textSno.textContent = index + 1;
-        textSno.style.width = '50px'
+        textSno.style.width = '50px';
 
-
+        // Text for the item (style code)
         const text = document.createElement("span");
         text.textContent = item;
-        text.style.width = '110px'
+        text.style.width = '110px';
 
-
-
+        // Text for the quantity
         const textQuantity = document.createElement("span");
         textQuantity.textContent = quan[index];
-        textQuantity.style.width = '50px'
-        textQuantity.style.marginLeft = '20px'
+        textQuantity.style.width = '50px';
+        textQuantity.style.marginLeft = '20px';
 
+        // Create the Box Number display
+        const boxNumber = document.createElement("span");
+        boxNumber.textContent = Array.from(uniqueBoxNumbers).join(",");
+        boxNumber.style.width = '400px';
+        boxNumber.style.overflow = 'auto';
+        boxNumber.style.marginLeft = '20px';
 
 
         // Copy button for the item
@@ -2282,22 +2292,30 @@ function createAccordionSection(title, quan, items) {
         copyButton.style.marginLeft = "10px";
         copyButton.style.marginTop = "10px";
         copyButton.addEventListener("click", () => {
-
-            document.getElementById("styleCodeInput").value = item
-            generateTable()
+            document.getElementById("styleCodeInput").value = item;
+            generateTable();
             document.querySelector('#container').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
-
         });
+
+        // Append the created elements to the line
         line.appendChild(textSno);
         line.appendChild(text);
         line.appendChild(textQuantity);
+        line.appendChild(boxNumber);
         line.appendChild(copyButton);
+
+        // Add the line to the content
         content.appendChild(line);
+        if (index < items.length - 1) {
+            line.style.borderBottom = '1px solid black'
+
+        }
     });
 
+    // Append the content to the section
     section.appendChild(content);
 
     // Toggle visibility on header click
@@ -2385,7 +2403,7 @@ function createAccordionSections(title, quan, items) {
                 behavior: 'smooth',
                 block: 'start'
             });
-            
+
         } else {
             content.style.display = "block";
             document.querySelector('#accordions').scrollIntoView({
@@ -2398,7 +2416,7 @@ function createAccordionSections(title, quan, items) {
 
     return section;
 }
-accordion.appendChild(createAccordionSection("Art No.", AllArticleQuantity, uniqueStyleCodes));
+accordion.appendChild(createAccordionSection("Art No.", AllArticleQuantity, uniqueStyleCodes, data));
 accordions.appendChild(createAccordionSections("Box.", AllBoxQuantity, uniqueBoxNumber));
 
 function Reset() {
@@ -2677,7 +2695,7 @@ scrollToTopButton.addEventListener("click", () => {
     });
 });
 refresh.addEventListener("click", () => {
-   location.reload()
+    location.reload()
 });
 function container() {
     // Get the content of the container div
